@@ -1,0 +1,1140 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Institut Mademois'L, institut de beauté à Mons</title>
+<meta name="description" content="Institut de beauté à Mons : ongles, mains, pieds, soins visage et dos, épilations, massages. Parc du Bois de Mons 130. Réservation en ligne.">
+<meta name="theme-color" content="#b23d2f">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="fr_BE">
+<meta property="og:title" content="Institut Mademois'L, institut de beauté à Mons">
+<meta property="og:description" content="Ongles, soins du visage et du dos, épilations, massages chez Laury, Parc du Bois de Mons 130 à Mons. 5,0 sur Google.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23b23d2f'/%3E%3Ctext x='32' y='46' font-family='Georgia,serif' font-style='italic' font-size='40' text-anchor='middle' fill='%23f4c3a3'%3EM%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Manrope:wght@400;600&display=swap">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BeautySalon",
+  "name": "Institut Mademois'L",
+  "description": "Institut de beauté (esthéticienne) à Mons : ongles, beauté des mains et des pieds, soins visage et dos, épilations, massages.",
+  "telephone": "+32499182803",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Parc du Bois de Mons 130",
+    "postalCode": "7000",
+    "addressLocality": "Mons",
+    "addressCountry": "BE"
+  },
+  "geo": { "@type": "GeoCoordinates", "latitude": 50.4477305, "longitude": 3.9904663 },
+  "hasMap": "https://www.google.com/maps/place/?q=place_id:ChIJe7qTEQBPwkcRynsNIUsrcLU",
+  "openingHoursSpecification": [
+    { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Tuesday", "Wednesday", "Thursday", "Friday"], "opens": "09:30", "closes": "18:00" },
+    { "@type": "OpeningHoursSpecification", "dayOfWeek": "Saturday", "opens": "10:00", "closes": "16:00" }
+  ],
+  "sameAs": ["https://www.facebook.com/institutmademoisl"]
+}
+</script>
+<style>
+/* ==========================================================================
+   Institut Mademois'L, Mons: design decisions
+   --------------------------------------------------------------------------
+   Palette   Taken from the photos. Powder cream (--bg) and peach (--accent)
+             come from the watercolour brush stroke of the institute's own
+             logo. Coral-red (--brand) is the chairs and towels in the cabin
+             and the lacquer on most of the nails, deepened to #b23d2f so
+             white text passes AA (5.8:1). Espresso (--ink) instead of black:
+             warm, like the script of the logo.
+   Type      Instrument Serif (display; its italic nods to the script logo
+             without imitating it) + Manrope (body and UI). 4 styles total.
+   Hero      Split editorial: the promise on the left, a "nuancier" of three
+             nail-shaped photo frames labelled like polish swatches, laid
+             over a peach brush stroke.
+   Rhythm    Cream hero, then one strong colour move (coral proof section
+             with a giant 5,0), then an editorial numbered service list,
+             gallery on powder, hours and map, booking, espresso footer with
+             an oversized wordmark.
+   Motif     The nail shape (oval top) on the photo frames and the seasonal
+             ritual card.
+   ========================================================================== */
+:root {
+  --bg: #fbf3ec;
+  --surface: #f5e4d8;
+  --ink: #2b1b18;
+  --ink-soft: #6e5650;
+  --brand: #b23d2f;
+  --brand-deep: #93301f;
+  --brand-ink: #fff8f3;
+  --accent: #f4c3a3;
+  --line: rgb(43 27 24 / .14);
+  --line-light: rgb(255 248 243 / .28);
+  --on-dark-soft: #c9b3ab;
+  --open: #2f7d4f;
+
+  --font-display: "Instrument Serif", "Times New Roman", Georgia, serif;
+  --font-body: "Manrope", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+
+  --step--1: clamp(.875rem, .85rem + .1vw, .9375rem);
+  --step-0: clamp(1.0625rem, 1.03rem + .15vw, 1.125rem);
+  --step-1: clamp(1.25rem, 1.15rem + .45vw, 1.5rem);
+  --step-2: clamp(1.5rem, 1.3rem + 1vw, 2.25rem);
+  --step-3: clamp(1.875rem, 1.5rem + 1.9vw, 3.25rem);
+  --step-4: clamp(2.375rem, 1.8rem + 3vw, 4.5rem);
+  --step-5: clamp(3rem, 2.2rem + 4.2vw, 6.25rem);
+
+  --space-1: 4px;  --space-2: 8px;  --space-3: 12px; --space-4: 16px; --space-5: 24px;
+  --space-6: 32px; --space-7: 48px; --space-8: 64px; --space-9: 96px;
+  --section: clamp(56px, 10vw, 128px);
+  --gutter: clamp(16px, 5vw, 40px);
+  --container: 1200px;
+
+  --r-sm: 12px;
+  --r-md: 24px;
+  --r-pill: 999px;
+  --nail: 50% 50% var(--r-md) var(--r-md) / 34% 34% var(--r-md) var(--r-md);
+
+  --shadow-1: 0 1px 2px rgb(43 27 24 / .06), 0 4px 14px -6px rgb(43 27 24 / .14);
+  --shadow-2: 0 2px 6px rgb(43 27 24 / .06), 0 20px 44px -18px rgb(43 27 24 / .32);
+  --shadow-3: 0 6px 14px rgb(43 27 24 / .08), 0 40px 80px -30px rgb(43 27 24 / .5);
+
+  --ease: cubic-bezier(.2, .7, .2, 1);
+  --header-h: 64px;
+}
+
+/* ---------- Base ---------- */
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font: 400 var(--step-0)/1.6 var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  padding-bottom: calc(68px + env(safe-area-inset-bottom));
+}
+body.is-locked { overflow: hidden; }
+img { display: block; max-width: 100%; height: auto; }
+a { color: inherit; }
+h1, h2, h3 { font-family: var(--font-display); font-weight: 400; margin: 0; text-wrap: balance; }
+h1 em, h2 em, h3 em { font-style: italic; }
+p { margin: 0; text-wrap: pretty; }
+blockquote, figure { margin: 0; }
+address { font-style: normal; }
+ul, ol { margin: 0; padding: 0; list-style: none; }
+section[id] { scroll-margin-top: calc(var(--header-h) + 8px); }
+:focus-visible { outline: 3px solid var(--brand); outline-offset: 3px; border-radius: 6px; }
+.proof :focus-visible, .footer :focus-visible, .actionbar :focus-visible, .book__online :focus-visible { outline-color: var(--accent); }
+
+.container { width: min(100% - 2 * var(--gutter), var(--container)); margin-inline: auto; }
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.skip {
+  position: absolute; left: var(--space-4); top: -120px; z-index: 100;
+  display: inline-flex; align-items: center; min-height: 48px; padding: 0 var(--space-5);
+  background: var(--ink); color: var(--bg); border-radius: var(--r-pill); font-weight: 600; text-decoration: none;
+}
+.skip:focus { top: var(--space-3); }
+
+.i { width: 22px; height: 22px; flex: none; fill: none; stroke: currentColor; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round; }
+.i--sm { width: 18px; height: 18px; }
+.star { width: 16px; height: 16px; fill: currentColor; flex: none; }
+
+.eyebrow {
+  display: flex; align-items: center; gap: var(--space-3);
+  font: 600 .8125rem/1.2 var(--font-body); letter-spacing: .16em; text-transform: uppercase;
+  color: var(--brand); margin-bottom: var(--space-4);
+}
+.eyebrow::before { content: ""; width: 28px; height: 1.5px; background: currentColor; }
+
+/* ---------- Buttons ---------- */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: var(--space-2);
+  min-height: 52px; padding: 0 var(--space-5);
+  border-radius: var(--r-pill); border: 1.5px solid transparent;
+  font: 600 1rem/1 var(--font-body); text-decoration: none; white-space: nowrap;
+  transition: transform .25s var(--ease), background-color .25s var(--ease), box-shadow .25s var(--ease), color .25s var(--ease);
+}
+.btn:active { transform: translateY(1px) scale(.99); }
+.btn--primary { background: var(--brand); color: var(--brand-ink); box-shadow: var(--shadow-1); }
+.btn--primary:hover { background: var(--brand-deep); box-shadow: var(--shadow-2); }
+.btn--ghost { border-color: currentColor; color: var(--ink); }
+.btn--ghost:hover { background: var(--ink); color: var(--bg); }
+.btn--light { background: var(--bg); color: var(--ink); }
+.btn--light:hover { background: var(--accent); }
+.btn--sm { min-height: 44px; padding: 0 var(--space-5); font-size: .9375rem; }
+
+/* ---------- Header ---------- */
+.site-header {
+  position: sticky; top: 0; z-index: 50;
+  background: var(--bg);
+  border-bottom: 1px solid transparent;
+  transition: border-color .3s var(--ease), box-shadow .3s var(--ease);
+}
+.site-header.is-scrolled { border-bottom-color: var(--line); box-shadow: 0 8px 24px -20px rgb(43 27 24 / .5); }
+.header__inner { display: flex; align-items: center; gap: var(--space-4); min-height: var(--header-h); }
+.brand { display: inline-flex; flex-direction: column; justify-content: center; min-height: 48px; text-decoration: none; line-height: 1; margin-right: auto; }
+.brand__kicker { font: 600 .6875rem/1 var(--font-body); letter-spacing: .32em; text-transform: uppercase; color: var(--ink-soft); padding-left: .2em; }
+.brand__name { font: italic 400 1.75rem/1 var(--font-display); letter-spacing: -.01em; margin-top: 2px; }
+.brand__name span { color: var(--brand); }
+.nav { display: none; }
+.header__cta { display: none; }
+.burger {
+  display: inline-grid; place-items: center; width: 48px; height: 48px; margin-right: -8px;
+  border: 0; background: transparent; color: var(--ink); border-radius: var(--r-pill); cursor: pointer;
+}
+.burger svg { width: 26px; height: 26px; }
+.burger .b-close { display: none; }
+.burger[aria-expanded="true"] .b-open { display: none; }
+.burger[aria-expanded="true"] .b-close { display: block; }
+
+.menu {
+  position: fixed; inset: var(--header-h) 0 0; z-index: 60;
+  background: var(--bg); overflow-y: auto;
+  padding: var(--space-5) var(--gutter) calc(var(--space-7) + env(safe-area-inset-bottom));
+  display: flex; flex-direction: column; gap: var(--space-6);
+  animation: menu-in .35s var(--ease);
+}
+.menu[hidden] { display: none; }
+.menu ul { border-top: 1px solid var(--line); }
+.menu li { border-bottom: 1px solid var(--line); }
+.menu li a {
+  display: flex; align-items: center; justify-content: space-between; min-height: 64px;
+  font: 400 var(--step-3)/1 var(--font-display); text-decoration: none;
+}
+.menu li a::after { content: "→"; font: 400 1.25rem/1 var(--font-body); color: var(--brand); }
+.menu__cta { display: grid; gap: var(--space-3); }
+.menu__info { display: grid; justify-items: start; gap: var(--space-3); font-size: 1rem; color: var(--ink-soft); }
+@keyframes menu-in { from { opacity: 0; transform: translateY(-8px); } }
+
+@media (min-width: 640px) {
+  .header__cta { display: inline-flex; }
+}
+@media (min-width: 960px) {
+  :root { --header-h: 76px; }
+  .burger, .menu { display: none !important; }
+  .nav { display: block; }
+  .nav ul { display: flex; gap: var(--space-1); }
+  .nav a {
+    display: inline-flex; align-items: center; min-height: 44px; padding: 0 var(--space-3);
+    font-size: 1rem; font-weight: 600; text-decoration: none; color: var(--ink-soft); border-radius: var(--r-pill);
+    transition: color .2s var(--ease), background-color .2s var(--ease);
+  }
+  .nav a:hover { color: var(--ink); background: var(--surface); }
+  .brand__name { font-size: 2rem; }
+}
+
+/* ---------- Hero ---------- */
+.hero { position: relative; overflow: clip; padding-block: var(--space-5) var(--section); }
+.hero__grid { display: grid; gap: var(--space-7); align-items: center; }
+.hero__top { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-3) var(--space-4); margin-bottom: var(--space-5); }
+.hero__top .eyebrow { margin: 0; }
+.hero h1 { font-size: var(--step-5); line-height: 1.02; letter-spacing: -.02em; }
+.hl {
+  color: var(--brand); font-style: italic; padding-inline: .04em .1em;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 60' preserveAspectRatio='none'%3E%3Cpath fill='%23f4c3a3' d='M6 18C60 8 150 5 240 7s130 2 156 7l-4 10 6 9-8 11c-90 10-220 12-320 10S12 52 4 48l6-10-8-10z'/%3E%3C/svg%3E") no-repeat 0 88% / 100% 42%;
+  -webkit-box-decoration-break: clone; box-decoration-break: clone;
+}
+.hero__lead { margin-top: var(--space-5); max-width: 36ch; font-size: var(--step-1); line-height: 1.5; color: var(--ink-soft); }
+.hero__actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: var(--space-6); }
+.hero__actions .btn { flex: 1 1 auto; padding-inline: 20px; }
+.hero__actions .btn--ghost { flex: 1 0 auto; }
+@media (max-width: 399px) { .hero__actions .btn--primary .i { display: none; } }
+.rating-chip {
+  display: inline-flex; align-items: center; gap: var(--space-2); flex-wrap: wrap;
+  min-height: 48px; margin-top: var(--space-5); padding: var(--space-2) var(--space-4);
+  border-radius: var(--r-pill); background: var(--surface); color: var(--ink);
+  text-decoration: none; font-size: 1rem; line-height: 1.2;
+  transition: background-color .25s var(--ease);
+}
+.rating-chip:hover { background: var(--accent); }
+.rating-chip strong { font-weight: 600; }
+.rating-chip .stars { color: var(--brand); }
+.stars { display: inline-flex; gap: 2px; }
+
+.status {
+  display: inline-flex; align-items: center; gap: var(--space-2);
+  min-height: 32px; padding: 4px var(--space-3) 4px 10px;
+  border-radius: var(--r-pill); border: 1px solid var(--line); background: rgb(255 255 255 / .55);
+  font-size: .9375rem; font-weight: 600; line-height: 1.2;
+}
+.status[hidden] { display: none; }
+.status__dot { width: 8px; height: 8px; border-radius: 50%; background: var(--brand); position: relative; flex: none; }
+.status.is-open .status__dot { background: var(--open); }
+.status.is-open .status__dot::after {
+  content: ""; position: absolute; inset: 0; border-radius: 50%; background: var(--open);
+  animation: pulse 2.4s var(--ease) infinite;
+}
+@keyframes pulse { 0% { transform: scale(1); opacity: .6; } 80%, 100% { transform: scale(2.8); opacity: 0; } }
+
+.nuancier { position: relative; margin-inline: calc(var(--gutter) * -0.4); }
+.nuancier__stroke {
+  position: absolute; left: -12%; right: -12%; top: 30%; height: 44%; width: 124%;
+  transform: rotate(-4deg); fill: var(--accent); z-index: -1;
+}
+.nuancier__grid { position: relative; display: grid; grid-template-columns: 1fr 1.22fr 1fr; gap: clamp(10px, 2vw, 22px); align-items: center; }
+.swatch { display: grid; gap: var(--space-3); justify-items: center; }
+.swatch:nth-child(1) { margin-top: 18%; }
+.swatch:nth-child(3) { margin-bottom: 14%; }
+.nail {
+  width: 100%; aspect-ratio: 3 / 4.3; overflow: hidden;
+  border-radius: var(--nail); background: var(--surface); box-shadow: var(--shadow-3);
+}
+.swatch:nth-child(2) .nail { aspect-ratio: 3 / 4.9; }
+.nail img { width: 100%; height: 100%; object-fit: cover; }
+.swatch figcaption {
+  font: italic 400 clamp(1rem, .9rem + .4vw, 1.25rem)/1.15 var(--font-display);
+  color: var(--ink-soft); text-align: center; text-wrap: balance;
+}
+.swatch figcaption::before { content: ""; display: block; width: 10px; height: 10px; margin: 0 auto 6px; border-radius: 50%; background: var(--sw); box-shadow: 0 0 0 3px var(--bg), 0 0 0 4px var(--line); }
+
+/* entrance */
+.hero__copy > *, .swatch { animation: rise .8s var(--ease) both; }
+.hero__copy > :nth-child(2) { animation-delay: .06s; }
+.hero__copy > :nth-child(3) { animation-delay: .12s; }
+.hero__copy > :nth-child(4) { animation-delay: .18s; }
+.hero__copy > :nth-child(5) { animation-delay: .24s; }
+.swatch:nth-child(1) { animation-delay: .25s; }
+.swatch:nth-child(2) { animation-delay: .15s; }
+.swatch:nth-child(3) { animation-delay: .35s; }
+@keyframes rise { from { opacity: 0; transform: translateY(18px); } }
+
+@media (min-width: 640px) {
+  .hero__actions .btn { flex: 0 0 auto; }
+  .nuancier { margin-inline: 0; }
+}
+@media (min-width: 960px) {
+  .hero { padding-top: var(--space-8); }
+  .hero__grid { grid-template-columns: 1fr 1.08fr; gap: var(--space-7); }
+  .nail { aspect-ratio: 3 / 4.5; }
+  .swatch:nth-child(2) .nail { aspect-ratio: 3 / 5.3; }
+  .hero__lead { max-width: 30ch; }
+}
+
+/* ---------- Proof (the strong colour move) ---------- */
+.proof { background: var(--brand); color: var(--brand-ink); padding-block: var(--section); overflow: clip; }
+.proof .eyebrow { color: var(--brand-ink); }
+.proof__head { display: grid; gap: var(--space-7); align-items: end; }
+.score { display: grid; justify-items: start; }
+.score__num {
+  font: 400 clamp(8.5rem, 5rem + 15vw, 15rem)/.78 var(--font-display);
+  letter-spacing: -.04em; color: var(--accent);
+  margin-left: -.04em;
+}
+.score__meta { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-3); margin-top: var(--space-5); font-size: var(--step-1); }
+.score__meta .stars { color: var(--accent); }
+.score__meta .star { width: 22px; height: 22px; }
+.score__meta b { font-weight: 600; font-variant-numeric: tabular-nums; }
+.proof h2 { font-size: var(--step-4); line-height: 1.04; letter-spacing: -.015em; }
+.proof h2 em { color: var(--accent); }
+.proof__intro p { margin-top: var(--space-4); max-width: 44ch; }
+.proof__intro .btn { margin-top: var(--space-6); }
+
+.rail {
+  display: grid; grid-auto-flow: column; grid-auto-columns: min(84%, 380px); gap: var(--space-4);
+  overflow-x: auto; overscroll-behavior-x: contain; scroll-snap-type: x mandatory;
+  padding: var(--space-8) max(var(--gutter), (100% - var(--container)) / 2) var(--space-5);
+  scroll-padding-inline: max(var(--gutter), (100% - var(--container)) / 2);
+  scrollbar-width: none;
+}
+.rail::-webkit-scrollbar { display: none; }
+.rail:focus-visible { outline-offset: -3px; }
+.review {
+  position: relative; scroll-snap-align: start;
+  display: flex; flex-direction: column; gap: var(--space-4);
+  padding: var(--space-6) var(--space-5) var(--space-5);
+  background: var(--bg); color: var(--ink); border-radius: var(--r-md); box-shadow: var(--shadow-2);
+}
+.review__mark { position: absolute; top: var(--space-3); right: var(--space-5); font: 400 5.5rem/.8 var(--font-display); color: var(--accent); pointer-events: none; }
+.review .stars { color: var(--brand); }
+.review blockquote { flex: 1; font: 400 var(--step-1)/1.32 var(--font-display); }
+.review__by { display: flex; flex-wrap: wrap; justify-content: space-between; gap: var(--space-2); padding-top: var(--space-4); border-top: 1px solid var(--line); font-size: 1rem; }
+.review__by strong { font-weight: 600; }
+.review__by time { color: var(--ink-soft); }
+.rail-nav { display: flex; align-items: center; justify-content: space-between; gap: var(--space-4); }
+.rail-nav p { font-size: 1rem; opacity: .9; }
+.rail-btns { display: flex; gap: var(--space-2); }
+.rail-btn {
+  display: inline-grid; place-items: center; width: 48px; height: 48px;
+  border-radius: 50%; border: 1.5px solid var(--line-light); background: transparent; color: var(--brand-ink); cursor: pointer;
+  transition: background-color .25s var(--ease), opacity .25s var(--ease);
+}
+.rail-btn:hover:not(:disabled) { background: rgb(255 248 243 / .14); }
+.rail-btn:disabled { opacity: .35; cursor: default; }
+
+@media (min-width: 960px) {
+  .proof__head { grid-template-columns: 5fr 7fr; gap: var(--space-8); }
+  .proof__intro { padding-bottom: var(--space-3); }
+}
+
+/* ---------- Services ---------- */
+.services { padding-block: var(--section); }
+.services__grid { display: grid; gap: var(--space-7); grid-template-areas: "intro" "list" "ritual"; }
+.services__intro { grid-area: intro; }
+.services__intro h2 { font-size: var(--step-4); line-height: 1.04; letter-spacing: -.015em; }
+.services__intro h2 em { color: var(--brand); }
+.services__intro p { margin-top: var(--space-4); color: var(--ink-soft); max-width: 40ch; }
+.services__intro .btn { margin-top: var(--space-6); }
+.carte { grid-area: list; border-top: 1px solid var(--line); counter-reset: carte; }
+.carte li {
+  display: grid; grid-template-columns: 2.5rem 1fr; gap: var(--space-2) var(--space-3); align-items: baseline;
+  padding-block: var(--space-5); border-bottom: 1px solid var(--line);
+}
+.carte li::before {
+  counter-increment: carte; content: counter(carte, decimal-leading-zero);
+  font: 600 .875rem/1 var(--font-body); letter-spacing: .06em; color: var(--brand); font-variant-numeric: tabular-nums;
+}
+.carte h3 { font-size: var(--step-3); line-height: 1.05; letter-spacing: -.01em; }
+.carte p { grid-column: 2; color: var(--ink-soft); font-size: 1rem; }
+.carte cite { font-style: normal; font-weight: 600; color: var(--ink); }
+
+.ritual {
+  grid-area: ritual; justify-self: center; width: min(100%, 380px);
+  display: grid; justify-items: center; text-align: center; gap: var(--space-3);
+  padding: clamp(72px, 18vw, 96px) var(--space-6) var(--space-6);
+  background: var(--accent); border-radius: var(--nail); box-shadow: var(--shadow-2);
+}
+.ritual__tag { font: 600 .8125rem/1 var(--font-body); letter-spacing: .16em; text-transform: uppercase; color: var(--ink); }
+.ritual h3 { font-size: var(--step-3); line-height: 1.02; }
+.ritual h3 em { color: var(--brand-deep); }
+.ritual__meta { display: flex; align-items: baseline; justify-content: center; gap: var(--space-4); margin-block: var(--space-2) var(--space-3); }
+.ritual__meta span { font-size: 1rem; color: var(--ink); }
+.ritual__meta strong { font: 400 var(--step-4)/1 var(--font-display); }
+.ritual .btn { width: 100%; }
+
+.cabin { display: grid; gap: var(--space-6); margin-top: var(--section); align-items: end; }
+.cabin__img { overflow: hidden; border-radius: var(--r-md); box-shadow: var(--shadow-2); }
+.cabin__img img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; object-position: 52% 55%; }
+.cabin__text h3 { font-size: var(--step-3); line-height: 1.05; letter-spacing: -.01em; }
+.cabin__text > p { margin-top: var(--space-4); color: var(--ink-soft); max-width: 42ch; }
+.cabin__quote { margin-top: var(--space-5); padding-left: var(--space-4); border-left: 2px solid var(--brand); }
+.cabin__quote p { font: italic 400 var(--step-1)/1.3 var(--font-display); }
+.cabin__quote footer { margin-top: var(--space-2); font-size: 1rem; color: var(--ink-soft); }
+
+@media (min-width: 960px) {
+  .services__grid { grid-template-columns: 5fr 7fr; grid-template-areas: "intro list" "ritual list"; column-gap: var(--space-9); row-gap: var(--space-7); align-items: start; }
+  .ritual { justify-self: start; }
+  .carte li { grid-template-columns: 3.5rem 1fr; }
+  .cabin { grid-template-columns: 7fr 5fr; gap: var(--space-8); }
+  .cabin__img img { aspect-ratio: 16 / 10; }
+  .cabin__text { padding-bottom: var(--space-5); }
+}
+
+/* ---------- Gallery ---------- */
+.gallery { background: var(--surface); padding-block: var(--section); }
+.gallery__head { display: grid; gap: var(--space-4); margin-bottom: var(--space-7); }
+.gallery__head h2 { font-size: var(--step-4); line-height: 1.04; letter-spacing: -.015em; }
+.gallery__head h2 em { color: var(--brand); }
+.gallery__head p { color: var(--ink-soft); max-width: 46ch; }
+.shots { display: grid; grid-template-columns: repeat(2, 1fr); grid-auto-rows: clamp(150px, 42vw, 240px); gap: var(--space-3); }
+.shots li { min-width: 0; }
+.shots .tall { grid-row: span 2; }
+.shot {
+  position: relative; display: block; width: 100%; height: 100%; overflow: hidden;
+  border-radius: var(--r-sm); background: var(--bg);
+}
+.shot img { width: 100%; height: 100%; object-fit: cover; transition: transform .7s var(--ease); }
+.shot::after {
+  content: ""; position: absolute; right: 10px; bottom: 10px; width: 36px; height: 36px; border-radius: 50%;
+  background: var(--bg) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%232b1b18' stroke-width='1.8' stroke-linecap='round'%3E%3Cpath d='M15 4h5v5M9 20H4v-5M20 4l-6 6M4 20l6-6'/%3E%3C/svg%3E") center / 18px no-repeat;
+  box-shadow: var(--shadow-1); opacity: .92;
+}
+@media (hover: hover) { .shot:hover img { transform: scale(1.04); } }
+@media (min-width: 960px) {
+  .gallery__head { grid-template-columns: 1fr 1fr; align-items: end; gap: var(--space-8); }
+  .shots { grid-template-columns: repeat(4, 1fr); grid-auto-rows: 250px; gap: var(--space-4); }
+  .shots li:nth-child(1) { grid-column: 1; grid-row: 1 / 3; }
+  .shots li:nth-child(2) { grid-column: 2; grid-row: 1; }
+  .shots li:nth-child(3) { grid-column: 3; grid-row: 1; }
+  .shots li:nth-child(4) { grid-column: 2; grid-row: 2; }
+  .shots li:nth-child(5) { grid-column: 4; grid-row: 1 / 3; }
+  .shots li:nth-child(6) { grid-column: 3; grid-row: 2; }
+}
+
+.lightbox {
+  width: min(100vw - 24px, 920px); max-height: calc(100dvh - 24px); padding: 0; border: 0;
+  border-radius: var(--r-md); background: var(--ink); color: var(--bg); overflow: hidden;
+}
+.lightbox::backdrop { background: rgb(43 27 24 / .82); }
+.lightbox[open] { animation: lb-in .35s var(--ease); }
+@keyframes lb-in { from { opacity: 0; transform: scale(.97); } }
+.lightbox img { width: 100%; max-height: calc(100dvh - 120px); object-fit: contain; background: #1d1210; }
+.lb-bar { display: flex; align-items: center; gap: var(--space-4); padding: var(--space-3) var(--space-3) var(--space-3) var(--space-5); }
+.lb-bar p { flex: 1; font-size: .9375rem; line-height: 1.45; color: var(--on-dark-soft); }
+.lb-nav { display: flex; gap: var(--space-2); flex: none; }
+.lb-btn {
+  display: grid; place-items: center; width: 48px; height: 48px; border-radius: 50%;
+  border: 0; background: var(--bg); color: var(--ink); cursor: pointer; box-shadow: var(--shadow-1);
+}
+.lb-close { position: absolute; top: 12px; right: 12px; }
+
+/* ---------- Visit: hours + map ---------- */
+.visit { padding-block: var(--section); }
+.visit__grid { display: grid; gap: var(--space-7); }
+.visit h2 { font-size: var(--step-4); line-height: 1.04; letter-spacing: -.015em; }
+.visit h2 em { color: var(--brand); }
+.visit .status { margin-top: var(--space-5); min-height: 40px; font-size: 1rem; padding-inline: 14px 16px; }
+.hours { width: 100%; margin-top: var(--space-5); border-collapse: collapse; font-variant-numeric: tabular-nums; }
+.hours th, .hours td { padding: 14px 0; border-bottom: 1px solid var(--line); text-align: left; font-weight: 400; vertical-align: middle; }
+.hours td { text-align: right; white-space: nowrap; }
+.hours tr.is-closed { color: var(--ink-soft); }
+.hours tr.is-today th, .hours tr.is-today td { font-weight: 600; color: var(--ink); }
+.hours tr.is-today { background: linear-gradient(90deg, var(--surface), var(--surface)) no-repeat; }
+.hours tr.is-today th { padding-left: var(--space-3); border-radius: var(--r-sm) 0 0 var(--r-sm); }
+.hours tr.is-today td { padding-right: var(--space-3); border-radius: 0 var(--r-sm) var(--r-sm) 0; }
+.today-tag {
+  display: inline-block; margin-left: var(--space-2); padding: 3px 8px; border-radius: var(--r-pill);
+  background: var(--brand); color: var(--brand-ink); font-size: .75rem; font-weight: 600; letter-spacing: .04em; vertical-align: 2px;
+}
+.visit__note { margin-top: var(--space-4); font-size: 1rem; color: var(--ink-soft); }
+
+.place { display: grid; gap: var(--space-5); align-content: start; }
+.map {
+  position: relative; overflow: hidden; border-radius: var(--r-md); background: var(--surface);
+  aspect-ratio: 4 / 3.4; box-shadow: var(--shadow-1);
+}
+.map iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+.map__fallback { position: absolute; inset: 0; display: grid; place-items: center; padding: var(--space-5); text-align: center; color: var(--ink-soft); font-size: 1rem; }
+.place address { display: flex; gap: var(--space-3); font-size: var(--step-1); line-height: 1.35; }
+.place address .i { color: var(--brand); margin-top: 3px; }
+.place__btns { display: flex; flex-wrap: wrap; gap: var(--space-3); }
+.place__btns .btn { flex: 1 1 160px; }
+.place__facts { display: grid; gap: var(--space-3); font-size: 1rem; color: var(--ink-soft); }
+.place__facts li { display: flex; gap: var(--space-3); align-items: center; }
+.place__facts .i { color: var(--ink); }
+.place__facts a { color: var(--ink); text-underline-offset: 3px; }
+
+@media (min-width: 960px) {
+  .visit__grid { grid-template-columns: 5fr 6fr; gap: var(--space-9); align-items: start; }
+  .map { aspect-ratio: 16 / 11; }
+}
+
+/* ---------- Booking ---------- */
+.book { background: var(--surface); padding-block: var(--section); }
+.book h2 { font-size: var(--step-4); line-height: 1.04; letter-spacing: -.015em; max-width: 18ch; }
+.book h2 em { color: var(--brand); }
+.book__grid { display: grid; gap: var(--space-4); margin-top: var(--space-7); }
+.book__online {
+  display: flex; flex-direction: column; gap: var(--space-5);
+  padding: var(--space-6) var(--space-5); border-radius: var(--r-md);
+  background: var(--brand); color: var(--brand-ink); box-shadow: var(--shadow-2);
+}
+.book__online h3 { font-size: var(--step-3); line-height: 1.05; }
+.book__online h3 em { color: var(--accent); }
+.book__online .btn { align-self: flex-start; }
+.book__fresha { margin-top: auto; display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-3); padding-top: var(--space-4); border-top: 1px solid var(--line-light); font-size: 1rem; font-weight: 600; }
+.book__fresha .stars { color: var(--accent); }
+.book__label { font: 600 .8125rem/1.2 var(--font-body); letter-spacing: .16em; text-transform: uppercase; }
+.book__card { padding: var(--space-6) var(--space-5); border-radius: var(--r-md); background: var(--bg); box-shadow: var(--shadow-1); }
+.book__card .book__label { color: var(--brand); margin-bottom: var(--space-3); }
+.book__phone {
+  display: inline-flex; align-items: center; min-height: 48px;
+  font: 400 clamp(2rem, 1.5rem + 2.4vw, 3rem)/1 var(--font-display); letter-spacing: -.01em;
+  text-decoration: none; color: var(--ink); white-space: nowrap;
+}
+.book__phone:hover { color: var(--brand); }
+.book__card > p:not(.book__label) { color: var(--ink-soft); font-size: 1rem; margin-top: var(--space-2); }
+.chips { border: 0; padding: 0; margin: var(--space-4) 0 0; display: flex; flex-wrap: wrap; gap: var(--space-2); min-width: 0; }
+.chips legend { padding: 0; margin-bottom: var(--space-3); font-size: 1rem; color: var(--ink-soft); }
+.chip { position: relative; }
+.chip input { position: absolute; opacity: 0; inset: 0; margin: 0; cursor: pointer; }
+.chip span {
+  display: inline-flex; align-items: center; min-height: 44px; padding: 0 var(--space-4);
+  border-radius: var(--r-pill); border: 1.5px solid var(--line); font-size: .9375rem; font-weight: 600;
+  transition: background-color .2s var(--ease), border-color .2s var(--ease), color .2s var(--ease);
+}
+.chip input:checked + span { background: var(--ink); border-color: var(--ink); color: var(--bg); }
+.chip input:focus-visible + span { outline: 3px solid var(--brand); outline-offset: 2px; }
+.sms-preview {
+  margin-top: var(--space-5); padding: var(--space-4); border-radius: var(--r-sm) var(--r-sm) var(--r-sm) 4px;
+  background: var(--surface); font-size: 1rem; line-height: 1.5;
+}
+.book__card .btn { margin-top: var(--space-4); }
+.book__social { margin-top: var(--space-6); }
+.social-link { display: inline-flex; align-items: center; gap: var(--space-3); min-height: 48px; font-weight: 600; text-decoration: none; }
+.social-link .i { width: 40px; height: 40px; padding: 9px; border-radius: 50%; background: var(--ink); color: var(--bg); }
+.social-link:hover span { text-decoration: underline; text-underline-offset: 4px; }
+
+@media (min-width: 768px) {
+  .book__grid { grid-template-columns: 1fr 1fr; }
+  .book__online { grid-row: span 2; padding: var(--space-7) var(--space-6); }
+  .book__card { padding: var(--space-6); }
+}
+@media (min-width: 1200px) {
+  .book__grid { grid-template-columns: 5fr 7fr; }
+}
+
+/* ---------- Footer ---------- */
+.footer { background: var(--ink); color: var(--bg); padding-block: var(--space-8) var(--space-6); overflow: clip; }
+.footer .footer__mark {
+  font: italic 400 clamp(4.25rem, 1rem + 17vw, 15rem)/.85 var(--font-display);
+  letter-spacing: -.035em; color: var(--accent); margin-left: -.03em; white-space: nowrap;
+}
+.footer__grid { display: grid; gap: var(--space-6); margin-top: var(--space-7); padding-top: var(--space-6); border-top: 1px solid var(--line-light); }
+.footer h2 { font: 600 .8125rem/1.2 var(--font-body); letter-spacing: .16em; text-transform: uppercase; color: var(--accent); margin-bottom: var(--space-3); }
+.footer p { color: var(--on-dark-soft); font-size: 1rem; line-height: 1.7; }
+.footer p a { color: var(--bg); text-underline-offset: 3px; }
+.footer .social-link .i { background: var(--bg); color: var(--ink); }
+.footer__base { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: var(--space-3); margin-top: var(--space-7); padding-top: var(--space-5); border-top: 1px solid var(--line-light); }
+.footer__base p { font-size: .9375rem; }
+.to-top { display: inline-flex; align-items: center; gap: var(--space-2); min-height: 44px; color: var(--bg); font-size: .9375rem; font-weight: 600; text-decoration: none; }
+@media (min-width: 768px) { .footer__grid { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 1200px) { .footer__grid { grid-template-columns: 1.2fr 1fr 1fr .8fr; } }
+
+/* ---------- Mobile action bar ---------- */
+.actionbar {
+  position: fixed; left: 0; right: 0; bottom: 0; z-index: 40;
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px;
+  background: rgb(255 248 243 / .12); border-top: 1px solid rgb(255 248 243 / .12);
+  padding-bottom: env(safe-area-inset-bottom); background-color: var(--ink);
+  box-shadow: 0 -10px 30px -12px rgb(43 27 24 / .45);
+}
+.actionbar a {
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 3px;
+  min-height: 60px; background: var(--ink); color: var(--bg); text-decoration: none;
+  font-size: .875rem; font-weight: 600; letter-spacing: .02em;
+}
+.actionbar a:first-child { background: var(--brand); color: var(--brand-ink); }
+.actionbar .i { width: 21px; height: 21px; }
+@media (min-width: 768px) {
+  .actionbar { display: none; }
+  body { padding-bottom: 0; }
+}
+
+/* ---------- Reveal ---------- */
+.js .reveal { opacity: 0; transform: translateY(16px); transition: opacity .7s var(--ease), transform .7s var(--ease); }
+.js .reveal.is-in { opacity: 1; transform: none; }
+.js .reveal.d1 { transition-delay: .08s; }
+.js .reveal.d2 { transition-delay: .16s; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+  .js .reveal { opacity: 1; transform: none; }
+}
+</style>
+<!--sf:preview--><meta name="robots" content="noindex, nofollow"><!--/sf:preview-->
+<!--sf:og--><meta property="og:image" content="https://institut-mademois-l-mons.aymenjallouli.dev/og.jpg"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:url" content="https://institut-mademois-l-mons.aymenjallouli.dev/"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:image" content="https://institut-mademois-l-mons.aymenjallouli.dev/og.jpg"><!--/sf:og-->
+</head>
+<body id="top">
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <symbol id="i-phone" viewBox="0 0 24 24"><path d="M5.5 3.5h3l1.8 4.6-2.3 1.5a11.5 11.5 0 0 0 6.4 6.4l1.5-2.3 4.6 1.8v3a2 2 0 0 1-2.2 2A17 17 0 0 1 3.5 5.7a2 2 0 0 1 2-2.2z"/></symbol>
+  <symbol id="i-sms" viewBox="0 0 24 24"><path d="M20.5 14.5a2 2 0 0 1-2 2H8.5l-5 4v-14a2 2 0 0 1 2-2h13a2 2 0 0 1 2 2z"/><path d="M8 10h.01M12 10h.01M16 10h.01"/></symbol>
+  <symbol id="i-nav" viewBox="0 0 24 24"><path d="M3.5 11 20.5 3.5 13 20.5l-1.8-7.7z"/></symbol>
+  <symbol id="i-cal" viewBox="0 0 24 24"><rect x="3.5" y="5" width="17" height="15.5" rx="2.5"/><path d="M16 3v4M8 3v4M3.5 10.5h17"/></symbol>
+  <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s-7-6.2-7-11.6a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M7 17 17 7M8.5 7H17v8.5"/></symbol>
+  <symbol id="i-left" viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></symbol>
+  <symbol id="i-right" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></symbol>
+  <symbol id="i-close" viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></symbol>
+  <symbol id="i-nfc" viewBox="0 0 24 24"><path d="M7.5 8.5a5 5 0 0 1 0 7M11 6a8.5 8.5 0 0 1 0 12M14.5 3.5a12 12 0 0 1 0 17"/></symbol>
+  <symbol id="i-fb" viewBox="0 0 24 24"><path d="M15.5 3.5h-2.2A4.3 4.3 0 0 0 9 7.8v2.7H6.5v3.5H9v6.5h3.5V14h2.6l.9-3.5h-3.5V8.2c0-.6.5-1.2 1.2-1.2h1.8z"/></symbol>
+  <symbol id="i-star" viewBox="0 0 24 24"><path d="m12 2.6 2.9 5.9 6.5.9-4.7 4.6 1.1 6.5L12 17.4l-5.8 3.1 1.1-6.5-4.7-4.6 6.5-.9z"/></symbol>
+</svg>
+
+<a class="skip" href="#contenu">Aller au contenu</a>
+
+<header class="site-header">
+  <div class="container header__inner">
+    <a class="brand" href="#top" aria-label="Institut Mademois’L, retour en haut de page">
+      <span class="brand__kicker">Institut</span>
+      <span class="brand__name">Mademois<span>’</span>L</span>
+    </a>
+    <nav class="nav" aria-label="Navigation principale">
+      <ul>
+        <li><a href="#avis">Avis</a></li>
+        <li><a href="#prestations">Prestations</a></li>
+        <li><a href="#galerie">Réalisations</a></li>
+        <li><a href="#horaires">Horaires &amp; accès</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+    <a class="btn btn--primary btn--sm header__cta" href="https://www.fresha.com/fr/a/institut-mademoisl-mons-parc-du-bois-de-mons-130-ky5nuutz" target="_blank" rel="noopener">Réserver</a>
+    <button class="burger" type="button" aria-expanded="false" aria-controls="menu" aria-label="Ouvrir le menu">
+      <svg class="i b-open" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8h16M4 16h16"/></svg>
+      <svg class="i b-close" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-close"/></svg>
+    </button>
+  </div>
+</header>
+
+<div class="menu" id="menu" hidden>
+  <nav aria-label="Menu mobile">
+    <ul>
+      <li><a href="#avis">Avis</a></li>
+      <li><a href="#prestations">Prestations</a></li>
+      <li><a href="#galerie">Réalisations</a></li>
+      <li><a href="#horaires">Horaires &amp; accès</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+  <div class="menu__cta">
+    <a class="btn btn--primary" href="https://www.fresha.com/fr/a/institut-mademoisl-mons-parc-du-bois-de-mons-130-ky5nuutz" target="_blank" rel="noopener"><svg class="i" aria-hidden="true"><use href="#i-cal"/></svg>Réserver en ligne</a>
+    <a class="btn btn--ghost" href="tel:+32499182803"><svg class="i" aria-hidden="true"><use href="#i-phone"/></svg>+32 499 18 28 03</a>
+  </div>
+  <div class="menu__info">
+    <p class="status" data-status hidden><span class="status__dot" aria-hidden="true"></span><span data-status-text></span></p>
+    <p>Parc du Bois de Mons 130, 7000 Mons</p>
+  </div>
+</div>
+
+<main id="contenu">
+
+  <!-- ============ HERO ============ -->
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="container hero__grid">
+      <div class="hero__copy">
+        <div class="hero__top">
+          <p class="eyebrow">Institut de beauté · Mons</p>
+          <p class="status" data-status hidden><span class="status__dot" aria-hidden="true"></span><span data-status-text></span></p>
+        </div>
+        <h1 id="hero-title">Chez Laury, on revient <span class="hl">les yeux fermés.</span></h1>
+        <p class="hero__lead">Ongles, soins du visage, épilations, massages&nbsp;: l’Institut Mademois’L vous reçoit au Parc du Bois de Mons.</p>
+        <div class="hero__actions">
+          <a class="btn btn--primary" href="https://www.fresha.com/fr/a/institut-mademoisl-mons-parc-du-bois-de-mons-130-ky5nuutz" target="_blank" rel="noopener"><svg class="i" aria-hidden="true"><use href="#i-cal"/></svg>Réserver en ligne</a>
+          <a class="btn btn--ghost" href="tel:+32499182803"><svg class="i" aria-hidden="true"><use href="#i-phone"/></svg>Appeler</a>
+        </div>
+        <div>
+          <a class="rating-chip" href="https://www.google.com/maps/place/?q=place_id:ChIJe7qTEQBPwkcRynsNIUsrcLU" target="_blank" rel="noopener" aria-label="Note Google : 5,0 sur 5, 24 avis. Voir sur Google Maps">
+            <span class="stars" aria-hidden="true"><svg class="star"><use href="#i-star"/></svg><svg class="star"><use href="#i-star"/></svg><svg class="star"><use href="#i-star"/></svg><svg class="star"><use href="#i-star"/></svg><svg class="star"><use href="#i-star"/></svg></span>
+            <span aria-hidden="true"><strong>5,0</strong> · 24 avis Google</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="nuancier" aria-label="Trois manucures réalisées à l’institut">
+        <svg class="nuancier__stroke" viewBox="0 0 400 60" preserveAspectRatio="none" aria-hidden="true"><path d="M6 18C60 8 150 5 240 7s130 2 156 7l-4 10 6 9-8 11c-90 10-220 12-320 10S12 52 4 48l6-10-8-10z"/></svg>
+        <div class="nuancier__grid">
+          <figure class="swatch" style="--sw:#d62a3a">
+            <div class="nail"><img src="assets/photos/photo-04.jpg" width="1438" height="1440" alt="Manucure dans les rouges et le corail, un ongle nude barré d’un trait rose" style="object-position:42% 50%" decoding="async"></div>
+            <figcaption>Rouges &amp; corail</figcaption>
+          </figure>
+          <figure class="swatch" style="--sw:#ef2f68">
+            <div class="nail"><img src="assets/photos/photo-01.jpg" width="900" height="1600" alt="Ongles courts rose framboise et orange vif, deux ongles nude à vagues rose et orange" style="object-position:50% 50%" fetchpriority="high"></div>
+            <figcaption>Vagues rose-orange</figcaption>
+          </figure>
+          <figure class="swatch" style="--sw:#2a2626">
+            <div class="nail"><img src="assets/photos/photo-06.jpg" width="1179" height="1197" alt="Ongles noirs laqués, un ongle nude à ligne pailletée et un ongle doré pailleté" style="object-position:50% 45%" decoding="async"></div>
+            <figcaption>Noir &amp; paillettes</figcaption>
+          </figure>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PROOF ============ -->
+  <section class="proof" id="avis" aria-labelledby="avis-title">
+    <div class="container proof__head">
+      <div class="score reveal">
+        <p class="eyebrow">Avis Google</p>
+        <p class="score__num" aria-hidden="true">5,0</p>
+        <div class="score__meta" aria-hidden="true">
+          <span class="stars"><svg class="star"><use href="#i-star"/></svg><svg class="star"><use href="#i-star"/></svg><svg class="star"><use href="#i-star"/></svg><svg class="star"><use href="#i-star"/></svg><svg class="star"><use href="#i-star"/></svg></span>
+          <span><b data-count="24">24</b> avis Google</span>
+        </div>
+        <p class="sr-only">Note moyenne de 5,0 sur 5, sur 24 avis Google.</p>
+      </div>
+      <div class="proof__intro reveal d1">
+        <h2 id="avis-title">À l’écoute. Douce. Ponctuelle. <em>Ce sont leurs mots.</em></h2>
+        <p>Les mêmes compliments reviennent sur Fresha&nbsp;: 5,0 sur 5, sur 110 avis.</p>
+        <a class="btn btn--light" href="https://www.google.com/maps/place/?q=place_id:ChIJe7qTEQBPwkcRynsNIUsrcLU" target="_blank" rel="noopener">Voir les 24 avis sur Google<svg class="i i--sm" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+      </div>
+    </div>
+
+    <ul class="rail" id="rail" tabindex="0" aria-label="Avis Google, faites défiler horizontalement">
+      <li class="review">
+        <span class="review__mark" aria-hidden="true">“</span>
+        <span class="stars" role="img" aria-label="5 étoiles sur 5"><svg class="star"><use href="#i-star"/></svg><svg class="star"><use href="#i-star"/></svg><svg class="star"><use href="#i-star"/></svg><svg class="star"><use href="#i-star"/></svg><svg class="star"><use href="#i-star"/></svg></span>
+        <blockquote><p>Laury est a l'écoute pas seulement pour les soins mais aussi personnellement. Toujours été très contente depuis qq années. Je l'ai suivi lors de son déménagement … Je retourne les yeux fermés</p></blockquote>
+        <p class="review__by"><strong>Sabine L.</strong><time datetime="2026-09-02">septembre 2026</time></p>
+      </li>
+      <li class="review">
+        <span class="review__mark" aria-hidden="true">“</span>
+        <span class="stars" role="img" aria-label="5 étoiles sur 5"><svg class="star"><use href="#i-star"/></svg><svg class="star"><use href="#i-star"/></svg><svg class="star"><use href="#i-star"/></svg><svg class="star"><use href="#i-star"/></svg><svg class="star"><use href="#i-star"/></svg></span>
+        <blockquote><p>On y est super bien accueilli et elle a le don de vous mettre à l'aise rapidement … Quant à son travail, il est tout simplement impeccable …</p></blockquote>
+        <p class="review__by"><strong>Olivier L.</strong><time datetime="2026-09-02">septembre 2026</time></p>
+      </li>
+      <li class="review">
+        <span class="review__mark" aria-hidden="true">“</span>
+        <span class="stars" role="img" aria-label="5 étoiles sur 5"><svg class="star"><use href="#i-star"/></svg><svg class="star"><use href="#i-star"/></svg><svg class="star"><use href="#i-star"/></svg><svg class="star"><use href="#i-star"/></svg><svg class="star"><use href="#i-star"/></svg></span>
+        <blockquote><p>Professionnelle, douce et bienveillante. Elle travaille très bien …</p></blockquote>
+        <p class="review__by"><strong>Charlotte L.</strong><time datetime="2026-05-08">mai 2026</time></p>
+      </li>
+      <li class="review">
+        <span class="review__mark" aria-hidden="true">“</span>
+        <span class="stars" role="img" aria-label="5 étoiles sur 5"><svg class="star"><use href="#i-star"/></svg><svg class="star"><use href="#i-star"/></svg><svg class="star"><use href="#i-star"/></svg><svg class="star"><use href="#i-star"/></svg><svg class="star"><use href="#i-star"/></svg></span>
+        <blockquote><p>J'ai fais appel à Laury dans le cadre d'un maquillage en vue d'un shooting photo. Je suis ressortie de l'institut satisfaite à 100% de son travail. Une personne très gentille, à l'écoute des envies de ses clientes, douée dans son travail, ponctuelle …</p></blockquote>
+        <p class="review__by"><strong>Merry D.</strong><time datetime="2024-12-21">décembre 2024</time></p>
+      </li>
+      <li class="review">
+        <span class="review__mark" aria-hidden="true">“</span>
+        <span class="stars" role="img" aria-label="5 étoiles sur 5"><svg class="star"><use href="#i-star"/></svg><svg class="star"><use href="#i-star"/></svg><svg class="star"><use href="#i-star"/></svg><svg class="star"><use href="#i-star"/></svg><svg class="star"><use href="#i-star"/></svg></span>
+        <blockquote><p>Meilleur endroit pour faire ses ongles, je recommande +++, large choix de couleurs et de style</p></blockquote>
+        <p class="review__by"><strong>Manon G.</strong><time datetime="2024-03-25">mars 2024</time></p>
+      </li>
+    </ul>
+    <div class="container rail-nav">
+      <p>Faites glisser pour lire la suite.</p>
+      <div class="rail-btns">
+        <button class="rail-btn" type="button" data-rail="prev" aria-controls="rail" aria-label="Avis précédent"><svg class="i" aria-hidden="true"><use href="#i-left"/></svg></button>
+        <button class="rail-btn" type="button" data-rail="next" aria-controls="rail" aria-label="Avis suivant"><svg class="i" aria-hidden="true"><use href="#i-right"/></svg></button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SERVICES ============ -->
+  <section class="services" id="prestations" aria-labelledby="prest-title">
+    <div class="container services__grid">
+      <div class="services__intro reveal">
+        <p class="eyebrow">Prestations</p>
+        <h2 id="prest-title">Du bout des ongles <em>jusqu’au dos.</em></h2>
+        <p>Le détail des 63 prestations et les créneaux disponibles se trouvent sur Fresha, la page de réservation de l’institut.</p>
+        <a class="btn btn--ghost" href="https://www.fresha.com/fr/a/institut-mademoisl-mons-parc-du-bois-de-mons-130-ky5nuutz" target="_blank" rel="noopener">Voir les 63 prestations<svg class="i i--sm" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+      </div>
+
+      <ol class="carte reveal d1">
+        <li><h3>Ongles</h3><p>«&nbsp;Large choix de couleurs et de style&nbsp;», écrit <cite>Manon G.</cite></p></li>
+        <li><h3>Beauté des mains</h3></li>
+        <li><h3>Beauté des pieds</h3></li>
+        <li><h3>Soins visage et dos</h3></li>
+        <li><h3>Épilations</h3></li>
+        <li><h3>Massages</h3></li>
+        <li><h3>Maquillage</h3><p><cite>Merry D.</cite> est passée avant un shooting photo.</p></li>
+      </ol>
+
+      <article class="ritual reveal" aria-labelledby="ritual-title">
+        <p class="ritual__tag">En ce moment</p>
+        <h3 id="ritual-title">Rituel éclat <em>automne</em></h3>
+        <p class="ritual__meta"><span>45 min</span><strong>39&nbsp;€</strong></p>
+        <a class="btn btn--primary" href="https://www.fresha.com/fr/a/institut-mademoisl-mons-parc-du-bois-de-mons-130-ky5nuutz" target="_blank" rel="noopener">Réserver ce rituel</a>
+      </article>
+    </div>
+
+    <div class="container cabin">
+      <figure class="cabin__img reveal">
+        <img src="assets/photos/photo-07.jpg" width="1600" height="900" loading="lazy" decoding="async" alt="La cabine de l’institut : table de soin au fond, poste manucure blanc et chaises corail au premier plan">
+      </figure>
+      <div class="cabin__text reveal d1">
+        <p class="eyebrow">L’institut</p>
+        <h3>La cabine du 130, <em>Parc du Bois de Mons.</em></h3>
+        <p>Table de soin au fond, poste manucure au premier plan. Laury, esthéticienne, y reçoit du mardi au samedi.</p>
+        <blockquote class="cabin__quote">
+          <p>«&nbsp;Je l'ai suivi lors de son déménagement …&nbsp;»</p>
+          <footer>Sabine L., avis Google</footer>
+        </blockquote>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ GALLERY ============ -->
+  <section class="gallery" id="galerie" aria-labelledby="gal-title">
+    <div class="container">
+      <div class="gallery__head reveal">
+        <div>
+          <p class="eyebrow">Réalisations</p>
+          <h2 id="gal-title">Vagues, paillettes, <em>feuilles d’or.</em></h2>
+        </div>
+        <p>Couleurs franches ou nude, motifs fins&nbsp;: quelques mains passées par l’institut. Touchez une photo pour l’agrandir.</p>
+      </div>
+      <ul class="shots">
+        <li class="tall reveal"><a class="shot" href="assets/photos/photo-01.jpg"><img src="assets/photos/photo-01.jpg" width="900" height="1600" loading="lazy" decoding="async" alt="Ongles rose framboise et orange vif, deux ongles nude à vagues rose et orange"></a></li>
+        <li class="reveal d1"><a class="shot" href="assets/photos/photo-03.jpg"><img src="assets/photos/photo-03.jpg" width="1430" height="1440" loading="lazy" decoding="async" alt="Ongles bleu vif, un ongle transparent à vagues bleues et blanches"></a></li>
+        <li class="reveal d2"><a class="shot" href="assets/photos/photo-04.jpg"><img src="assets/photos/photo-04.jpg" width="1438" height="1440" loading="lazy" decoding="async" alt="Manucure dans les rouges et le corail, un ongle nude barré d’un trait rose"></a></li>
+        <li class="reveal"><a class="shot" href="assets/photos/photo-06.jpg"><img src="assets/photos/photo-06.jpg" width="1179" height="1197" loading="lazy" decoding="async" alt="Ongles noirs laqués, un ongle nude à ligne pailletée et un ongle doré pailleté"></a></li>
+        <li class="tall reveal d1"><a class="shot" href="assets/photos/photo-02.jpg"><img src="assets/photos/photo-02.jpg" width="900" height="1600" loading="lazy" decoding="async" alt="Ongles rouge orangé, un ongle nude parsemé de feuilles d’or"></a></li>
+        <li class="reveal d2"><a class="shot" href="assets/photos/photo-05.jpg"><img src="assets/photos/photo-05.jpg" width="1179" height="1028" loading="lazy" decoding="async" alt="Ongles rose poudré en amande, un flocon de neige blanc sur l’annulaire"></a></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ============ HOURS + MAP ============ -->
+  <section class="visit" id="horaires" aria-labelledby="visit-title">
+    <div class="container visit__grid">
+      <div class="reveal">
+        <p class="eyebrow">Horaires &amp; accès</p>
+        <h2 id="visit-title">Du mardi au samedi, <em>au Parc du Bois de Mons.</em></h2>
+        <p class="status" data-status hidden><span class="status__dot" aria-hidden="true"></span><span data-status-text></span></p>
+        <table class="hours">
+          <caption class="sr-only">Horaires d’ouverture de l’Institut Mademois’L</caption>
+          <tbody>
+            <tr data-day="lundi" class="is-closed"><th scope="row">Lundi</th><td>Fermé</td></tr>
+            <tr data-day="mardi"><th scope="row">Mardi</th><td>9h30 – 18h</td></tr>
+            <tr data-day="mercredi"><th scope="row">Mercredi</th><td>9h30 – 18h</td></tr>
+            <tr data-day="jeudi"><th scope="row">Jeudi</th><td>9h30 – 18h</td></tr>
+            <tr data-day="vendredi"><th scope="row">Vendredi</th><td>9h30 – 18h</td></tr>
+            <tr data-day="samedi"><th scope="row">Samedi</th><td>10h – 16h</td></tr>
+            <tr data-day="dimanche" class="is-closed"><th scope="row">Dimanche</th><td>Fermé</td></tr>
+          </tbody>
+        </table>
+        <p class="visit__note">L’agenda en ligne de l’institut prévoit une pause de 12h30 à 13h.</p>
+      </div>
+
+      <div class="place reveal d1">
+        <div class="map">
+          <p class="map__fallback">Carte Google Maps de l’institut</p>
+          <iframe src="https://www.google.com/maps?q=Institut%20Mademois'L%2C%20Parc%20du%20Bois%20de%20Mons%20130%2C%207000%20Mons&amp;output=embed" title="Carte : Institut Mademois’L, Parc du Bois de Mons 130, 7000 Mons" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+        </div>
+        <address><svg class="i" aria-hidden="true"><use href="#i-pin"/></svg><span>Parc du Bois de Mons 130<br>7000 Mons, Belgique</span></address>
+        <div class="place__btns">
+          <a class="btn btn--primary" href="https://www.google.com/maps/dir/?api=1&amp;destination=Institut%20Mademois'L%2C%20Parc%20du%20Bois%20de%20Mons%20130%2C%207000%20Mons" target="_blank" rel="noopener"><svg class="i" aria-hidden="true"><use href="#i-nav"/></svg>Itinéraire</a>
+          <a class="btn btn--ghost" href="tel:+32499182803"><svg class="i" aria-hidden="true"><use href="#i-phone"/></svg>Appeler</a>
+        </div>
+        <ul class="place__facts">
+          <li><svg class="i" aria-hidden="true"><use href="#i-nfc"/></svg>Paiement mobile sans contact (NFC) accepté</li>
+          <li><svg class="i" aria-hidden="true"><use href="#i-pin"/></svg><p>Carte trop petite&nbsp;? <a href="https://www.google.com/maps/place/?q=place_id:ChIJe7qTEQBPwkcRynsNIUsrcLU" target="_blank" rel="noopener">Ouvrir la fiche Google Maps</a></p></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ BOOKING ============ -->
+  <section class="book" id="contact" aria-labelledby="book-title">
+    <div class="container">
+      <div class="book__head reveal">
+        <p class="eyebrow">Rendez-vous</p>
+        <h2 id="book-title">En ligne, au téléphone <em>ou par SMS.</em></h2>
+      </div>
+      <div class="book__grid">
+        <article class="book__online reveal">
+          <div>
+            <p class="book__label">Réservation en ligne</p>
+            <h3 style="margin-top:var(--space-4)">Choisissez le soin, <em>puis l’heure.</em></h3>
+            <p style="margin-top:var(--space-4)">Les 63 prestations de l’institut et les créneaux disponibles, sur Fresha.</p>
+          </div>
+          <p class="book__fresha"><span class="stars" aria-hidden="true"><svg class="star"><use href="#i-star"/></svg><svg class="star"><use href="#i-star"/></svg><svg class="star"><use href="#i-star"/></svg><svg class="star"><use href="#i-star"/></svg><svg class="star"><use href="#i-star"/></svg></span>5,0 sur Fresha · 110 avis</p>
+          <a class="btn btn--light" href="https://www.fresha.com/fr/a/institut-mademoisl-mons-parc-du-bois-de-mons-130-ky5nuutz" target="_blank" rel="noopener"><svg class="i" aria-hidden="true"><use href="#i-cal"/></svg>Réserver sur Fresha</a>
+        </article>
+
+        <div class="book__card reveal d1">
+          <p class="book__label">Par téléphone</p>
+          <a class="book__phone" href="tel:+32499182803">+32 499 18 28 03</a>
+          <p>Du mardi au vendredi de 9h30 à 18h, le samedi de 10h à 16h.</p>
+        </div>
+
+        <div class="book__card reveal d2">
+          <p class="book__label">Par SMS</p>
+          <fieldset class="chips">
+            <legend>Pour quel soin&nbsp;? Le message se prépare tout seul.</legend>
+            <label class="chip"><input type="radio" name="soin" value="les ongles" checked><span>Ongles</span></label>
+            <label class="chip"><input type="radio" name="soin" value="une beauté des mains"><span>Mains</span></label>
+            <label class="chip"><input type="radio" name="soin" value="une beauté des pieds"><span>Pieds</span></label>
+            <label class="chip"><input type="radio" name="soin" value="un soin du visage ou du dos"><span>Visage &amp; dos</span></label>
+            <label class="chip"><input type="radio" name="soin" value="une épilation"><span>Épilation</span></label>
+            <label class="chip"><input type="radio" name="soin" value="un massage"><span>Massage</span></label>
+            <label class="chip"><input type="radio" name="soin" value="un maquillage"><span>Maquillage</span></label>
+            <label class="chip"><input type="radio" name="soin" value="le rituel éclat automne"><span>Rituel automne</span></label>
+          </fieldset>
+          <p class="sms-preview" id="sms-preview" aria-live="polite">Bonjour Laury, je souhaiterais un rendez-vous pour les ongles. Quelles seraient vos disponibilités ? Merci.</p>
+          <a class="btn btn--primary" id="sms-link" href="sms:+32499182803?&amp;body=Bonjour%20Laury%2C%20je%20souhaiterais%20un%20rendez-vous%20pour%20les%20ongles.%20Quelles%20seraient%20vos%20disponibilit%C3%A9s%20%3F%20Merci."><svg class="i" aria-hidden="true"><use href="#i-sms"/></svg>Envoyer ce SMS</a>
+        </div>
+      </div>
+      <p class="book__social reveal">
+        <a class="social-link" href="https://www.facebook.com/institutmademoisl" target="_blank" rel="noopener"><svg class="i" aria-hidden="true"><use href="#i-fb"/></svg><span>Suivre l’institut sur Facebook</span></a>
+      </p>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <p class="footer__mark" aria-hidden="true">Mademois’L</p>
+    <div class="footer__grid">
+      <div>
+        <h2>Institut Mademois’L</h2>
+        <p>Institut de beauté (esthéticienne)<br>Parc du Bois de Mons 130<br>7000 Mons, Belgique</p>
+      </div>
+      <div>
+        <h2>Contact</h2>
+        <p><a href="tel:+32499182803">+32 499 18 28 03</a><br><a href="https://www.fresha.com/fr/a/institut-mademoisl-mons-parc-du-bois-de-mons-130-ky5nuutz" target="_blank" rel="noopener">Réserver sur Fresha</a><br><a href="https://www.google.com/maps/dir/?api=1&amp;destination=Institut%20Mademois'L%2C%20Parc%20du%20Bois%20de%20Mons%20130%2C%207000%20Mons" target="_blank" rel="noopener">Itinéraire</a></p>
+      </div>
+      <div>
+        <h2>Horaires</h2>
+        <p>Mardi – vendredi&nbsp;: 9h30 – 18h<br>Samedi&nbsp;: 10h – 16h<br>Dimanche et lundi&nbsp;: fermé</p>
+      </div>
+      <div>
+        <h2>Suivre</h2>
+        <a class="social-link" href="https://www.facebook.com/institutmademoisl" target="_blank" rel="noopener" aria-label="Institut Mademois’L sur Facebook"><svg class="i" aria-hidden="true"><use href="#i-fb"/></svg><span>Facebook</span></a>
+      </div>
+    </div>
+    <div class="footer__base">
+      <p>© <span data-year></span> Institut Mademois’L · Mons</p>
+      <a class="to-top" href="#top">Haut de page <span aria-hidden="true">↑</span></a>
+    </div>
+  </div>
+</footer>
+
+<nav class="actionbar" aria-label="Actions rapides">
+  <a href="tel:+32499182803"><svg class="i" aria-hidden="true"><use href="#i-phone"/></svg>Appeler</a>
+  <a href="sms:+32499182803?&amp;body=Bonjour%20Laury%2C%20je%20souhaiterais%20un%20rendez-vous.%20Quelles%20seraient%20vos%20disponibilit%C3%A9s%20%3F%20Merci."><svg class="i" aria-hidden="true"><use href="#i-sms"/></svg>SMS</a>
+  <a href="https://www.google.com/maps/dir/?api=1&amp;destination=Institut%20Mademois'L%2C%20Parc%20du%20Bois%20de%20Mons%20130%2C%207000%20Mons" target="_blank" rel="noopener"><svg class="i" aria-hidden="true"><use href="#i-nav"/></svg>Itinéraire</a>
+</nav>
+
+<dialog class="lightbox" id="lightbox" aria-label="Photo agrandie">
+  <img alt="" data-lb-img>
+  <div class="lb-bar">
+    <p data-lb-cap></p>
+    <div class="lb-nav">
+      <button class="lb-btn" type="button" data-lb="prev" aria-label="Photo précédente"><svg class="i" aria-hidden="true"><use href="#i-left"/></svg></button>
+      <button class="lb-btn" type="button" data-lb="next" aria-label="Photo suivante"><svg class="i" aria-hidden="true"><use href="#i-right"/></svg></button>
+    </div>
+  </div>
+  <button class="lb-btn lb-close" type="button" data-lb="close" aria-label="Fermer la photo"><svg class="i" aria-hidden="true"><use href="#i-close"/></svg></button>
+</dialog>
+
+<script>
+(() => {
+  const $ = (s, c = document) => c.querySelector(s);
+  const $$ = (s, c = document) => [...c.querySelectorAll(s)];
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  document.documentElement.classList.add('js');
+
+  $$('[data-year]').forEach(el => { el.textContent = new Date().getFullYear(); });
+
+  /* Header shadow */
+  const header = $('.site-header');
+  const onScroll = () => header.classList.toggle('is-scrolled', scrollY > 8);
+  addEventListener('scroll', onScroll, { passive: true }); onScroll();
+
+  /* Mobile menu */
+  const burger = $('.burger'), menu = $('#menu');
+  const isOpen = () => burger.getAttribute('aria-expanded') === 'true';
+  const setMenu = open => {
+    burger.setAttribute('aria-expanded', String(open));
+    burger.setAttribute('aria-label', open ? 'Fermer le menu' : 'Ouvrir le menu');
+    menu.hidden = !open;
+    document.body.classList.toggle('is-locked', open);
+  };
+  burger.addEventListener('click', () => setMenu(!isOpen()));
+  menu.addEventListener('click', e => { if (e.target.closest('a')) setMenu(false); });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape' && isOpen()) { setMenu(false); burger.focus(); } });
+  matchMedia('(min-width: 960px)').addEventListener('change', e => { if (e.matches && isOpen()) setMenu(false); });
+
+  /* Opening hours: live status + today */
+  const HOURS = { mardi: '09:30–18:00', mercredi: '09:30–18:00', jeudi: '09:30–18:00', vendredi: '09:30–18:00', samedi: '10:00–16:00', dimanche: 'Fermé', lundi: 'Fermé' };
+  const DAYS = ['dimanche', 'lundi', 'mardi', 'mercredi', 'jeudi', 'vendredi', 'samedi'];
+  const parse = s => {
+    s = String(s || '').trim();
+    if (!s || /ferm/i.test(s)) return [];
+    if (/24\s*h|24\/24|24 ?heures/i.test(s)) return [[0, 1440]];
+    return s.split(/[,;]|\set\s/).map(p => {
+      const m = p.match(/(\d{1,2})(?:[:h.](\d{2}))?\s*[–—-]\s*(\d{1,2})(?:[:h.](\d{2}))?/);
+      if (!m) return null;
+      const a = +m[1] * 60 + (+m[2] || 0);
+      let b = +m[3] * 60 + (+m[4] || 0);
+      if (b <= a) b += 1440; /* range past midnight */
+      return [a, b];
+    }).filter(Boolean);
+  };
+  const fmt = m => { m %= 1440; if (!m) return 'minuit'; const h = Math.floor(m / 60), mm = m % 60; return h + 'h' + (mm ? String(mm).padStart(2, '0') : ''); };
+  const now = (() => {
+    try {
+      const p = {};
+      new Intl.DateTimeFormat('en-US', { timeZone: 'Europe/Brussels', weekday: 'short', hour: 'numeric', minute: 'numeric', hourCycle: 'h23' })
+        .formatToParts(new Date()).forEach(x => { p[x.type] = x.value; });
+      const d = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'].indexOf(p.weekday);
+      if (d < 0) throw 0;
+      return { d, t: (+p.hour % 24) * 60 + +p.minute };
+    } catch (e) { const n = new Date(); return { d: n.getDay(), t: n.getHours() * 60 + n.getMinutes() }; }
+  })();
+  const day = k => parse(HOURS[DAYS[((now.d + k) % 7 + 7) % 7]]);
+  let closeAt = null;
+  day(0).forEach(([a, b]) => { if (now.t >= a && now.t < b) closeAt = b; });
+  if (closeAt === null) day(-1).forEach(([a, b]) => { if (b > 1440 && now.t + 1440 < b) closeAt = b - 1440; });
+  let text, open = closeAt !== null;
+  if (open) {
+    const allDay = day(0).some(r => r[0] === 0 && r[1] >= 1440);
+    text = allDay ? 'Ouvert 24h/24' : 'Ouvert maintenant · ferme à ' + fmt(closeAt);
+  } else {
+    let next = null;
+    for (let k = 0; k < 8 && !next; k++) {
+      const starts = day(k).map(r => r[0]).filter(a => k > 0 || a > now.t).sort((x, y) => x - y);
+      if (starts.length) next = { k, a: starts[0] };
+    }
+    text = next ? 'Fermé · ouvre ' + (next.k === 0 ? '' : next.k === 1 ? 'demain ' : DAYS[(now.d + next.k) % 7] + ' ') + 'à ' + fmt(next.a) : 'Fermé';
+  }
+  $$('[data-status]').forEach(el => {
+    el.classList.add(open ? 'is-open' : 'is-closed');
+    $('[data-status-text]', el).textContent = text;
+    el.hidden = false;
+  });
+  const row = $(`tr[data-day="${DAYS[now.d]}"]`);
+  if (row) {
+    row.classList.add('is-today');
+    row.setAttribute('aria-current', 'date');
+    const tag = document.createElement('span');
+    tag.className = 'today-tag'; tag.textContent = 'Aujourd’hui';
+    row.querySelector('th').append(tag);
+  }
+
+  /* Scroll reveals */
+  const io = !reduce && 'IntersectionObserver' in window
+    ? new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('is-in'); io.unobserve(e.target); } }), { rootMargin: '0px 0px -8% 0px' })
+    : null;
+  $$('.reveal').forEach(el => io ? io.observe(el) : el.classList.add('is-in'));
+
+  /* Count-up on the review count */
+  const cnt = $('[data-count]');
+  if (cnt && io) {
+    const target = +cnt.dataset.count;
+    const co = new IntersectionObserver(([e]) => {
+      if (!e.isIntersecting) return;
+      co.disconnect();
+      const t0 = performance.now();
+      const step = t => { const p = Math.min(1, (t - t0) / 1200); cnt.textContent = Math.round(target * (1 - Math.pow(1 - p, 3))); if (p < 1) requestAnimationFrame(step); };
+      cnt.textContent = '0'; requestAnimationFrame(step);
+    }, { threshold: .8 });
+    co.observe(cnt);
+  }
+
+  /* Review rail */
+  const rail = $('#rail');
+  if (rail) {
+    const btns = $$('[data-rail]');
+    const sync = () => {
+      const max = rail.scrollWidth - rail.clientWidth - 2;
+      btns.forEach(b => { b.disabled = b.dataset.rail === 'prev' ? rail.scrollLeft <= 2 : rail.scrollLeft >= max; });
+    };
+    btns.forEach(b => b.addEventListener('click', () => {
+      const card = rail.querySelector('li');
+      const dx = card.getBoundingClientRect().width + parseFloat(getComputedStyle(rail).columnGap || 16);
+      rail.scrollBy({ left: b.dataset.rail === 'next' ? dx : -dx, behavior: reduce ? 'auto' : 'smooth' });
+    }));
+    rail.addEventListener('scroll', sync, { passive: true });
+    addEventListener('resize', sync); sync();
+  }
+
+  /* Gallery lightbox */
+  const dlg = $('#lightbox'), shots = $$('.shot');
+  if (dlg && typeof dlg.showModal === 'function') {
+    const img = $('[data-lb-img]', dlg), cap = $('[data-lb-cap]', dlg);
+    let i = 0;
+    const show = n => {
+      i = (n + shots.length) % shots.length;
+      const s = $('img', shots[i]);
+      img.src = shots[i].getAttribute('href'); img.alt = s.alt; cap.textContent = s.alt + ' · ' + (i + 1) + '/' + shots.length;
+    };
+    shots.forEach((s, n) => s.addEventListener('click', e => { e.preventDefault(); show(n); dlg.showModal(); document.body.classList.add('is-locked'); }));
+    $('[data-lb="close"]', dlg).addEventListener('click', () => dlg.close());
+    $('[data-lb="prev"]', dlg).addEventListener('click', () => show(i - 1));
+    $('[data-lb="next"]', dlg).addEventListener('click', () => show(i + 1));
+    dlg.addEventListener('keydown', e => { if (e.key === 'ArrowLeft') show(i - 1); else if (e.key === 'ArrowRight') show(i + 1); });
+    dlg.addEventListener('click', e => { if (e.target === dlg) dlg.close(); });
+    dlg.addEventListener('close', () => { if (!isOpen()) document.body.classList.remove('is-locked'); });
+  }
+
+  /* SMS composer */
+  const smsLink = $('#sms-link'), preview = $('#sms-preview');
+  const radios = $$('input[name="soin"]');
+  const updSms = () => {
+    const r = radios.find(x => x.checked);
+    const msg = `Bonjour Laury, je souhaiterais un rendez-vous pour ${r ? r.value : 'un soin'}. Quelles seraient vos disponibilités ? Merci.`;
+    preview.textContent = msg;
+    smsLink.href = 'sms:+32499182803?&body=' + encodeURIComponent(msg);
+  };
+  radios.forEach(r => r.addEventListener('change', updSms));
+  if (smsLink && preview) updSms();
+})();
+</script>
+<!--sf:preview--><div style="padding:18px 16px;font:13px/1.5 system-ui,-apple-system,Segoe UI,Roboto,sans-serif;text-align:center;background:#0f0f10;color:#a3a3a8">Aperçu réalisé par Aymen Jallouli pour Institut Mademois'L : ce site n'est pas encore le site officiel de l'établissement.</div><!--/sf:preview-->
+<!--sf:track--><script>(function(){try{var q=new URLSearchParams(location.search),r=q.get('r')||sessionStorage.getItem('sf_r');if(!r)return;sessionStorage.setItem('sf_r',r);navigator.sendBeacon("https://track.aymenjallouli.dev/t"+'?r='+encodeURIComponent(r)+'&p='+encodeURIComponent(location.pathname));}catch(e){}})();</script><!--/sf:track-->
+</body>
+</html>
